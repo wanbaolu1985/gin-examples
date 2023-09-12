@@ -28,11 +28,11 @@ func main() {
 	route.GET("/login", func(c *gin.Context) {
 		// Set cookie {"label": "ok" }, maxAge 30 seconds.
 		c.SetCookie("label", "ok", 30, "/", "localhost", false, true)
-		c.String(200, "Login success!")
+		c.String(http.StatusOK, "Login success!")
 	})
 
 	route.GET("/home", CookieTool(), func(c *gin.Context) {
-		c.JSON(200, gin.H{"data": "Your home page"})
+		c.JSON(http.StatusOK, gin.H{"data": "Your home page"})
 	})
 
 	route.Run(":8080")
